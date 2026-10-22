@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DECORA | Room Preview</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="/">DECORA<span>.</span></a>
+  <span class="tag">INDOOR DECOR PREVIEW</span>
+</header>
+<main class="page">
+  <section class="intro">
+    <p class="eyebrow">TRY IT IN YOUR SPACE</p>
+    <h1>See how your decor<br>looks in your room.</h1>
+    <p>Upload a room photo and a decor photo, position the item, and save a preview.</p>
+  </section>
+
+  <section class="upload-row">
+    <label class="upload-card" for="roomInput">
+      <span class="step">01 / ROOM</span>
+      <strong>Upload room photo</strong>
+      <small>JPG, PNG or WEBP</small>
+      <input id="roomInput" type="file" accept="image/png,image/jpeg,image/webp">
+    </label>
+    <label class="upload-card" for="decorInput">
+      <span class="step">02 / DECOR</span>
+      <strong>Upload decor photo</strong>
+      <small>Transparent PNG recommended</small>
+      <input id="decorInput" type="file" accept="image/png,image/jpeg,image/webp">
+    </label>
+  </section>
+
+  <section class="editor">
+    <div class="editor-head">
+      <div><p class="eyebrow">ROOM CANVAS</p><h2>Arrange your decor</h2></div>
+      <span id="status" class="status">Upload both images to begin</span>
+    </div>
+    <div class="canvas-wrap" id="canvasWrap">
+      <canvas id="previewCanvas" width="1200" height="760"></canvas>
+      <div class="empty" id="emptyState"><strong>Your preview will appear here</strong><span>Upload a room photo and a decor item to start.</span></div>
+    </div>
+    <div class="tools">
+      <label class="control">Decor size <input id="scale" type="range" min="10" max="100" value="35"><span id="scaleLabel">35%</span></label>
+      <label class="control">Rotation <input id="rotation" type="range" min="-180" max="180" value="0"><span id="rotationLabel">0°</span></label>
+      <button id="centerBtn" type="button">Center item</button>
+      <button id="resetBtn" type="button">Reset</button>
+      <button id="downloadBtn" class="primary" type="button" disabled>Download preview</button>
+    </div>
+    <p class="hint">Tip: drag the decor item on the image to position it. Use a transparent-background PNG for the cleanest result.</p>
+    <p class="disclaimer">This is a manual photo mockup, not live AR. It does not automatically calculate real-world size, perspective, occlusion, or shadows.</p>
+  </section>
+</main>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
